@@ -27,3 +27,12 @@ sub_txt = gsub('</?tr>', '', sub_txt)
 sub_txt = gsub('</?td>', '', sub_txt)
 sub_txt = gsub(' ', '', sub_txt)
 sub_txt
+
+library(rvest)
+
+URL = "https://reg.ntuh.gov.tw/EmgInfoBoard/NTUHEmgInfo.aspx"
+
+website = read_html(URL)
+
+needed_txt = website %>% html_nodes("tr") %>% html_text()
+needed_txt
